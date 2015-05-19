@@ -1,0 +1,51 @@
+/* CSS Document */
+
+body{margin:0px; padding:0px; }
+#container{ margin:0px auto; width:80%; }
+#header{ border:1px solid #666666; float:left; padding:30px; width:94%; }
+#header_left{float:left;  width:250px; display:block; padding:10px; font-size:20px; }
+#header_right{float:right; display:block; padding:10px; }
+
+
+#info_header{background-color:#666666; float:left; width:100%; }
+#info_header ul{ list-style-type:none; margin:0px; padding:0px; }
+#info_header li{ float:left; border-right:1px solid #FFFFFF;  }
+#info_header a:link, a:visited{ display:block; width:100px;  background-color:#666666; padding:10px; color:#FFFFFF; text-decoration:none; font-weight:bold; text-align:center; }
+#info_header a:hover, a:active{ background-color:#666666; color:#FF0000; text-align:center; }
+
+#container_middle{ float:left; width:100%; border:1px solid #666666; }
+#middle_left{ float:left; width:22%; line-height:30px; border-right:1px solid #666666; font-size:12px; font-family:verdana;}
+#middle_center{float:left; font-family:verdana; font-size:12px; padding:5px; width:75%; border-left:1px solid #666; }
+#middleul{margin-left:0px; }
+#middleul a{text-decoration:none; color:#000; background-color:#fff; }
+#middleul a:hover, a:active{ background-color:#FFFFFF; color:red; }
+
+/* WEB ADMINISTRATOR */
+#target_msg{ font-size:11px; padding-left:5px; border-bottom:1px solid #666666; padding-bottom:2px;  }
+#target_msg a{text-decoration:none; background-color:#fff; color:#000;}
+#middleul1 a{text-decoration:none; color:#000; }
+#middleul1 li{border-bottom:1px solid #999999; line-height:40px; }
+#middleul1 li:hover{border-bottom:2px solid #FF0000; color:#000; }
+#tableheader{background-color:#00CCCC; color:#fff; font-weight:bold; }
+#tableheader td{padding:5px; }
+#tabledata td{}
+#tableborder{padding:1px; border:1px solid #000;}
+#heading_wa{ padding:10px; background-color:#00CCCC; color:#fff; text-align:left; width:100%; font-weight:bold;}
+#web_add label { display: inline-block; width:300px; padding:5px 5px 0px 30px; font-weight:normal; color:#000; }
+#web_add input{ margin-bottom:5px; padding:3px; font-size:11px; width:200px;}
+#web_actionbar input{width:80px;}
+
+
+
+/* CONTENT ADMINISTRATOR */
+#heading_ca{ padding:10px; background-color:#00CCCC; color:#fff; text-align:left; width:100%; font-weight:bold;}
+#ca_add label, #ca_update label { display: inline-block; width:300px; padding:5px 5px 0px 30px; font-weight:normal; color:#000; }
+#ca_add input, #ca_update input{ margin-bottom:5px; padding:3px; font-size:11px; width:200px;}
+#ca_add select, #ca_update select{ margin-bottom:5px; padding:3px; font-size:11px; width:210px;}
+#ca_view label { display: inline-block; width:300px; padding:5px 5px 0px 30px; font-weight:normal; color:#000;  }
+#ca_view  input{ margin-bottom:5px; padding:4px; font-size:11px; width:200px; background-color:#F2F2F2; border:0px none;}
+#ca_view  select{ margin-bottom:5px; padding:3px; font-size:11px; width:210px; background-color:#F2F2F2; border:0px none;}
+#ca_actionbar input{width:80px;}
+#submitMsg{padding:10px;}
+
+
