@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="5.2.3" timestamp="2015-05-24T19:14:40.411">
+<file name="E:\project_udnati\udnati\src\main\java\com\udanti\Entity.java">
+<violation beginline="5" endline="5" begincolumn="16" endcolumn="28" rule="UnusedModifier" ruleset="Unused Code" package="com.udanti" class="Entity" method="getId" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.2.3/pmd-java/rules/java/unusedcode.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+<violation beginline="6" endline="6" begincolumn="16" endcolumn="35" rule="UnusedModifier" ruleset="Unused Code" package="com.udanti" class="Entity" method="setId" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.2.3/pmd-java/rules/java/unusedcode.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+</file>
+<file name="E:\project_udnati\udnati\src\main\java\com\udanti\dao\UserDao.java">
+<violation beginline="8" endline="8" begincolumn="16" endcolumn="86" rule="UnusedModifier" ruleset="Unused Code" package="com.udanti.dao" class="UserDao" method="loginCheck" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.2.3/pmd-java/rules/java/unusedcode.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+</file>
+<file name="E:\project_udnati\udnati\src\main\java\com\udanti\service\UserService.java">
+<violation beginline="9" endline="9" begincolumn="16" endcolumn="89" rule="UnusedModifier" ruleset="Unused Code" package="com.udanti.service" class="UserService" method="loginCheck" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.2.3/pmd-java/rules/java/unusedcode.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+</file>
+</pmd>
