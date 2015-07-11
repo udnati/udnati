@@ -147,76 +147,8 @@
 		<artifactId>poi</artifactId>
 		<version>3.6</version>
    </dependency>	-->
-
-<!-- PMD Dependency on 22-may-2015 -->
-<dependency>
-  <groupId>org.apache.maven.plugins</groupId>
-  <artifactId>maven-pmd-plugin</artifactId>
-  <version>3.4</version>
-  <type>maven-plugin</type>
-</dependency>
-
-<!-- CheckStyle DEPENDENCY ON 22-May-2015 -->
-
-<dependency>
-  <groupId>org.apache.maven.plugins</groupId>
-  <artifactId>maven-checkstyle-plugin</artifactId>
-  <version>2.15</version>
-  <type>maven-plugin</type>
-</dependency>
-
+	
   </dependencies>
-
-<!-- PMD Dependency on 22-may-2015 -->
-
-<!-- <reporting>
-    <plugins>
-      <plugin>
-        <artifactId>maven-pmd-plugin</artifactId>
-        <version>3.4</version>
-        <configuration>
-          <targetJdk>1.7.0</targetJdk>
-        </configuration>
-      </plugin>
-   
-    <plugin>
-        <artifactId>maven-pmd-plugin</artifactId>
-        <version>3.4</version>
-        <reportSets>
-          <reportSet>
-            <reports>
-              <report>pmd</report>
-              <report>cpd</report>
-            </reports>
-          </reportSet>
-        </reportSets>
-      </plugin>
-   
-   
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-pmd-plugin</artifactId>
-        <version>3.4</version>
-        <configuration>
-          <rulesets>
-            Two rule sets that come bundled with PMD
-            <ruleset>/rulesets/java/braces.xml</ruleset>
-            <ruleset>/rulesets/java/naming.xml</ruleset>
-            Custom local file system rule set
-            <ruleset>E:\project_udnati\Doc\xml\PMD.xml</ruleset>
-            Custom remote rule set accessed via a URL
-            <ruleset>http://localhost/PMD.xml</ruleset>
-          </rulesets>
-        </configuration>
-      </plugin>
-    
-
-
-
-
-          </plugins>
-  </reporting> -->
-
   
   <repositories>
 		<repository>
@@ -240,78 +172,6 @@
     <webXml>WEB-INF\web.xml</webXml>        
   </configuration>
 </plugin> -->
-		
-		
-		<!-- PMD dependency on 22-may-2015 -->
-		<plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-pmd-plugin</artifactId>
-        <version>3.4</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>check</goal>
-              <goal>cpd-check</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-		
-		<!-- CheckStyle dependency on 22-May-2015 -->
-		 <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-checkstyle-plugin</artifactId>
-          <version>2.15</version>
-          <dependencies>
-            <dependency>
-              <groupId>com.puppycrawl.tools</groupId>
-              <artifactId>checkstyle</artifactId>
-              <version>2.15</version>
-            </dependency>
-          </dependencies>
-        </plugin>
-		<!-- check Style plugin ends -->
-		  <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>2.15</version>
-        <executions>
-          <execution>
-            <id>verify-style</id>
-            <phase>process-classes</phase>
-            <goals>
-              <goal>check</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <logViolationsToConsole>true</logViolationsToConsole>
-          <checkstyleRules>
-            <module name="Checker">
-
-              <!-- Checks for Size Violations.                    -->
-              <!-- See http://checkstyle.sf.net/config_sizes.html -->
-              <module name="FileLength">
-                <property name="max" value="3500" />
-                <property name="fileExtensions" value="java"/>
-              </module>
-
-              <!-- Checks for whitespace                               -->
-              <!-- See http://checkstyle.sf.net/config_whitespace.html -->
-              <module name="FileTabCharacter"/>
-
-              <module name="TreeWalker">
-                <module name="StaticVariableName"/>
-                <module name="TypeName">
-                  <property name="format" value="^_?[A-Z][a-zA-Z0-9]*$"/>
-                </module>
-              </module>
-            </module>
-          </checkstyleRules>
-        </configuration>
-      </plugin>
-		
-		
 		
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>

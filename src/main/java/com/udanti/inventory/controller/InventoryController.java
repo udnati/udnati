@@ -1,5 +1,15 @@
-package com.udanti.sd.controller;
+package com.udanti.inventory.controller;
 
-public class SdController {
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
+@Controller
+@RequestMapping("inventory")
+public class InventoryController {
+	@RequestMapping(value="/inventoryController",method=RequestMethod.GET)
+	public String test(){
+		System.out.println("===================>Inventory Controller");
+		return "/admin/index";
+	}
 }

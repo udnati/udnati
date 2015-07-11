@@ -12,7 +12,7 @@
 
 </head>
 <body>
-<div id="topheader">Udnati</div>
+<div id="topheader">Udnatigfjasdgahdhjahdgsajhdjhsagjdhjashjhsdag</div>
 <div style="margin-top:50px;">
 <div id="containerr" align="center"  >
     <form:form method="post" action="loginCheck" >
@@ -22,7 +22,7 @@
 	</form:form>
 </div>
 </div>
-<a href="test">jtgjhgj</a>
+<a href="billing/test">jtgjhgj</a>
 
 </body>
 </html>

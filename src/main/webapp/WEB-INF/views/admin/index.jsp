@@ -22,7 +22,11 @@
 	</form:form>
 </div>
 </div>
-<a href="test">jtgjhgj</a>
-
+<a href="../billing/test">Billing Controller</a></br>
+<a href="../delivery/deliveryController">Delivery Controller</a></br>
+<a href="../finance/financeController">Finance Controller</a></br>
+<a href="../inventory/inventoryController">Inventory Controller</a></br>
+<a href="../sales/salesController">Sales Controller</a></br>
+<a href="../shipment/shipmentController">Shipment Controller</a></br>
 </body>
 </html>
