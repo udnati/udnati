@@ -12,7 +12,7 @@
 
 </head>
 <body>
-<div id="topheader">Udnatigfjasdgahdhjahdgsajhdjhsagjdhjashjhsdag</div>
+<div id="topheader">Udnati</div>
 <div style="margin-top:50px;">
 <div id="containerr" align="center"  >
     <form:form method="post" action="loginCheck" >
@@ -22,7 +22,11 @@
 	</form:form>
 </div>
 </div>
-<a href="billing/test">jtgjhgj</a>
-
+<a href="../billing/test">Billing Controller</a></br>
+<a href="../delivery/deliveryController">Delivery Controller</a></br>
+<a href="../finance/financeController">Finance Controller</a></br>
+<a href="../inventory/inventoryController">Inventory Controller</a></br>
+<a href="../sales/salesController">Sales Controller</a></br>
+<a href="../shipment/shipmentController">Shipment Controller</a></br>
 </body>
 </html>
