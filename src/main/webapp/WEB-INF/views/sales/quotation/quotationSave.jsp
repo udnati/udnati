@@ -4,7 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Quotation Status</title>
+<h1>Ab Aaj ki chhuti</h1>
+${quotationDBMap.get("customerId")}
 </head>
 <body>
 

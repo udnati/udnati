@@ -27,7 +27,7 @@ public class SalesController {
 	private SalesHandler salesHandler;
 
 	@RequestMapping(value = "/salesController", method = RequestMethod.POST)
-	public Model submitQuotation(HttpServletRequest request,Model model) {
+	public String submitQuotation(HttpServletRequest request, Model model) {
 
 		final Map<String, Object> quotationUIMap = new HashMap<String, Object>();
 
@@ -57,9 +57,9 @@ public class SalesController {
 		System.out.println("return cust ID : "
 				+ quotationDBMap.get("customerId").toString());
 		model.addAttribute("quotationDBMap", quotationDBMap);
-		String jspName = "/sales/quotation/quotation";
-		
-		return model;
+		String jspName = "/sales/quotation/quotationSave";
+
+		return jspName;
 
 	}
 }
