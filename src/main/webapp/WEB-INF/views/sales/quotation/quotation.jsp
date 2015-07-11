@@ -9,8 +9,8 @@
 </head>
 <body>
 <form:form action="../sales/salesController"  name="quotation"  id="quotation" method="post">
-<label>Customer Id</label><input type="text" name="custId" id="custId" value="" ></input>
-<label>Customer Name</label><input type="text" name="custName" id="custName" value="" ></input>
+<label>Customer Id</label><input type="text" name="custId" id="custId" value="${customerId}" ></input>
+<label>Customer Name</label><input type="text" name="custName" id="custName" value="${customerName}" ></input>
 <label>Date</label><input type="text" name="date" id="date" value=""></input>
 <div class="clear"></div>
 <label>Item No.</label><input type="text" name="itemNo" id="itemNo" value=""></input>
