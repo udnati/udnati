@@ -1,7 +1,8 @@
 // default package
 // Generated 12 Jul, 2015 1:05:27 PM by Hibernate Tools 3.4.0.CR1
-
+package com.udanti.billing.dao;
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -150,7 +151,7 @@ public class BillingItem implements java.io.Serializable {
 		this.itemId = itemId;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "billing_document")
 	public BillingHeader getBillingHeader() {
 		return this.billingHeader;

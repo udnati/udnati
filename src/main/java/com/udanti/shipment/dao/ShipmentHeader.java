@@ -1,6 +1,7 @@
 // default package
 // Generated 12 Jul, 2015 1:05:27 PM by Hibernate Tools 3.4.0.CR1
 
+package com.udanti.shipment.dao;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -51,7 +52,7 @@ public class ShipmentHeader implements java.io.Serializable {
 	private String driverName;
 	private String vehicleNumber;
 	private String driverContact;
-	private Set shipmentItems = new HashSet(0);
+	private Set<ShipmentItem> shipmentItems = new HashSet<ShipmentItem>(0);
 
 	public ShipmentHeader() {
 	}
@@ -70,7 +71,7 @@ public class ShipmentHeader implements java.io.Serializable {
 			String weightUnit, String volumeUnit, Integer distance,
 			Double travelTime, Double shipmentCost, Double totalCost,
 			String handle, String freightId, String driverName,
-			String vehicleNumber, String driverContact, Set shipmentItems) {
+			String vehicleNumber, String driverContact, Set<ShipmentItem> shipmentItems) {
 		this.shipmentNumber = shipmentNumber;
 		this.category = category;
 		this.shipmentType = shipmentType;
@@ -392,11 +393,11 @@ public class ShipmentHeader implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "shipmentHeader")
-	public Set getShipmentItems() {
+	public Set<ShipmentItem> getShipmentItems() {
 		return this.shipmentItems;
 	}
 
-	public void setShipmentItems(Set shipmentItems) {
+	public void setShipmentItems(Set<ShipmentItem> shipmentItems) {
 		this.shipmentItems = shipmentItems;
 	}
 

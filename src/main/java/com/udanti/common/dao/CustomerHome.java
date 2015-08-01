@@ -1,18 +1,20 @@
 // default package
 // Generated 12 Jul, 2015 1:05:28 PM by Hibernate Tools 3.4.0.CR1
+package com.udanti.common.dao;
 
-import javax.ejb.Stateless;
+//import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
- * Home object for domain model class Customer.
- * @see .Customer
+ * Home object for domain model class CustomerHome.
+ * @see .CustomerHome
  * @author Hibernate Tools
  */
-@Stateless
+//@Stateless
 public class CustomerHome {
 
 	private static final Log log = LogFactory.getLog(CustomerHome.class);
@@ -20,8 +22,8 @@ public class CustomerHome {
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	public void persist(Customer transientInstance) {
-		log.debug("persisting Customer instance");
+	public void persist(CustomerHome transientInstance) {
+		log.debug("persisting CustomerHome instance");
 		try {
 			entityManager.persist(transientInstance);
 			log.debug("persist successful");
@@ -31,8 +33,8 @@ public class CustomerHome {
 		}
 	}
 
-	public void remove(Customer persistentInstance) {
-		log.debug("removing Customer instance");
+	public void remove(CustomerHome persistentInstance) {
+		log.debug("removing CustomerHome instance");
 		try {
 			entityManager.remove(persistentInstance);
 			log.debug("remove successful");
@@ -42,10 +44,10 @@ public class CustomerHome {
 		}
 	}
 
-	public Customer merge(Customer detachedInstance) {
-		log.debug("merging Customer instance");
+	public CustomerHome merge(CustomerHome detachedInstance) {
+		log.debug("merging CustomerHome instance");
 		try {
-			Customer result = entityManager.merge(detachedInstance);
+			CustomerHome result = entityManager.merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -54,10 +56,10 @@ public class CustomerHome {
 		}
 	}
 
-	public Customer findById(int id) {
-		log.debug("getting Customer instance with id: " + id);
+	public CustomerHome findById(int id) {
+		log.debug("getting CustomerHome instance with id: " + id);
 		try {
-			Customer instance = entityManager.find(Customer.class, id);
+			CustomerHome instance = entityManager.find(CustomerHome.class, id);
 			log.debug("get successful");
 			return instance;
 		} catch (RuntimeException re) {

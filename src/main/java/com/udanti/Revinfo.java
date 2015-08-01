@@ -1,5 +1,7 @@
 // default package
 // Generated 12 Jul, 2015 1:05:27 PM by Hibernate Tools 3.4.0.CR1
+package com.udanti;
+ 
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

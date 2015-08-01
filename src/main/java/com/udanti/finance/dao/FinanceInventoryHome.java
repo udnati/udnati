@@ -1,7 +1,8 @@
 // default package
 // Generated 12 Jul, 2015 1:05:28 PM by Hibernate Tools 3.4.0.CR1
 
-import javax.ejb.Stateless;
+package com.udanti.finance.dao;
+//import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.apache.commons.logging.Log;
@@ -12,7 +13,7 @@ import org.apache.commons.logging.LogFactory;
  * @see .FinanceInventory
  * @author Hibernate Tools
  */
-@Stateless
+//@Stateless
 public class FinanceInventoryHome {
 
 	private static final Log log = LogFactory

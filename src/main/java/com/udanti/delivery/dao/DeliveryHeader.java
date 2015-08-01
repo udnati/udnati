@@ -1,6 +1,8 @@
 // default package
 // Generated 12 Jul, 2015 1:05:27 PM by Hibernate Tools 3.4.0.CR1
 
+package com.udanti.delivery.dao;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -64,7 +66,7 @@ public class DeliveryHeader implements java.io.Serializable {
 	private String handoverLocation;
 	private String handoverDate;
 	private String packedBy;
-	private Set deliveryItems = new HashSet(0);
+	private Set<DeliveryItem> deliveryItems = new HashSet<DeliveryItem>(0);
 
 	public DeliveryHeader() {
 	}
@@ -146,7 +148,7 @@ public class DeliveryHeader implements java.io.Serializable {
 			String confirmationStatus, String returnCancelled,
 			String invoiceBeforeGi, String qulaityCheck,
 			String qualityCheckedBy, String handoverLocation,
-			String handoverDate, String packedBy, Set deliveryItems) {
+			String handoverDate, String packedBy, Set<DeliveryItem> deliveryItems) {
 		this.deliveryNumber = deliveryNumber;
 		this.createdBy = createdBy;
 		this.time = time;
@@ -602,11 +604,11 @@ public class DeliveryHeader implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "deliveryHeader")
-	public Set getDeliveryItems() {
+	public Set<DeliveryItem> getDeliveryItems() {
 		return this.deliveryItems;
 	}
 
-	public void setDeliveryItems(Set deliveryItems) {
+	public void setDeliveryItems(Set<DeliveryItem> deliveryItems) {
 		this.deliveryItems = deliveryItems;
 	}
 

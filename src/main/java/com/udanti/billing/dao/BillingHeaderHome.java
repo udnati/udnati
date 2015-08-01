@@ -1,9 +1,10 @@
 // default package
 // Generated 12 Jul, 2015 1:05:28 PM by Hibernate Tools 3.4.0.CR1
+package com.udanti.billing.dao;
 
-import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -12,7 +13,7 @@ import org.apache.commons.logging.LogFactory;
  * @see .BillingHeader
  * @author Hibernate Tools
  */
-@Stateless
+//@Stateless
 public class BillingHeaderHome {
 
 	private static final Log log = LogFactory.getLog(BillingHeaderHome.class);

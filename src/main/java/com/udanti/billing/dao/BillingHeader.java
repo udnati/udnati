@@ -1,5 +1,6 @@
 // default package
 // Generated 12 Jul, 2015 1:05:27 PM by Hibernate Tools 3.4.0.CR1
+package com.udanti.billing.dao;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -64,7 +65,7 @@ public class BillingHeader implements java.io.Serializable {
 	private String taxType;
 	private String paymentReference;
 	private String paymentType;
-	private Set billingItems = new HashSet(0);
+	private Set<BillingItem> billingItems = new HashSet<BillingItem>(0);
 
 	public BillingHeader() {
 	}
@@ -87,7 +88,7 @@ public class BillingHeader implements java.io.Serializable {
 			String invoiceListType, String division, String creditAccount,
 			BigDecimal credDataExchRate, String poNumber, String agent,
 			Double taxAmount, String taxType, String paymentReference,
-			String paymentType, Set billingItems) {
+			String paymentType, Set<BillingItem> billingItems) {
 		this.billingDocument = billingDocument;
 		this.billingType = billingType;
 		this.billingCategory = billingCategory;
@@ -527,11 +528,11 @@ public class BillingHeader implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "billingHeader")
-	public Set getBillingItems() {
+	public Set<BillingItem> getBillingItems() {
 		return this.billingItems;
 	}
 
-	public void setBillingItems(Set billingItems) {
+	public void setBillingItems(Set<BillingItem> billingItems) {
 		this.billingItems = billingItems;
 	}
 
