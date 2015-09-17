@@ -10,3 +10,31 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+.DS_Store
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**
+*.tmp
+*.bak
+*.swp
+local.properties
+.classpath
+.settings/
+.loadpath
+.*.sw[a-z]
+*.un~
+Session.vim
+*.class
+.gradle
+*.bin
+bin/
+target
+.svn
+.build
+build
+*SNAPSHOT.jar
+*.zip
+install/
