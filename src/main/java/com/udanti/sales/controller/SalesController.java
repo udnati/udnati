@@ -1,22 +1,33 @@
 package com.udanti.sales.controller;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
+import com.udanti.common.dao.Customer;
 import com.udanti.sales.handler.SalesHandler;
 
 @Controller
 @RequestMapping("sales")
-public class SalesController {
+public class SalesController extends MultiActionController {
 	@RequestMapping(value = "/salesController", method = RequestMethod.GET)
 	public String test() {
 		System.out.println("===================>Sales Controller");
@@ -62,4 +73,39 @@ public class SalesController {
 		return jspName;
 
 	}
+	
+	@RequestMapping(value = "/createSO", method = RequestMethod.GET)
+	public String createSO(){
+		
+		
+		String jspName = "/sales/so/soCreation";
+		return jspName;
+	}
+	@ResponseBody
+	@RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE, value="/searchCustomerName" , method=RequestMethod.GET)
+	public   List getCustomerNameList(@RequestParam("term") String query) {
+
+		String autoHint = "";
+		String jsp="";
+		StringBuilder sb = new StringBuilder();
+		boolean namesAdded = false;
+		Map<String, Object> autoCustomerUIMap = new HashMap<String, Object>();
+		Map<String, Object> autoCustomerDBMap = new HashMap<String, Object>();	
+		List<Customer> customerNameList = new ArrayList<Customer>();
+			/*if (request.getParameter("query") != null) {
+				autoHint = (request.getParameter("query"));
+			}*/
+			System.out.println("value of autohint is "+autoHint);
+			autoCustomerUIMap.put("autoHint", query);
+			
+			customerNameList = salesHandler.getCustomerNameList(autoCustomerUIMap);
+			
+			System.out.println("size of list"+customerNameList.size());
+			  return customerNameList;
+		
+		//jsp = "responseForCustomerName";
+
+		//return new ModelAndView(jsp, "map", autoCustomerDBMap);
+	}
+
 }

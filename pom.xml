@@ -111,10 +111,24 @@
 		
 		<!-- Jackson JSON Mapper -->
 		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.7.1</version>
-		</dependency>
+	<groupId>org.codehaus.jackson</groupId>
+	<artifactId>jackson-mapper-asl</artifactId>
+	<version>1.9.13</version>
+</dependency>
+
+<!-- Jackson Core asl -->
+<dependency>
+	<groupId>org.codehaus.jackson</groupId>
+	<artifactId>jackson-core-asl</artifactId>
+	<version>1.9.13</version>
+</dependency>
+
+<!-- Jackson JAX RS -->
+ <dependency>
+	<groupId>org.codehaus.jackson</groupId>
+	<artifactId>jackson-jaxrs</artifactId>
+	<version>1.9.13</version>
+</dependency>
  
 		<dependency>
 			<groupId>org.apache.commons</groupId>

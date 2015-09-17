@@ -29,5 +29,6 @@
 <a href="../sales/salesController">Sales Controller</a></br>
 <a href="../shipment/shipmentController">Shipment Controller</a></br>
 <a href="../customer/saveCustomer">Create Customer</a></br>
+<a href="../sales/createSO">Create Supply Order</a></br>
 </body>
 </html>
