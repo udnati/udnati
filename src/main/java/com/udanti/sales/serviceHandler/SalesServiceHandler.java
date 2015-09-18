@@ -14,7 +14,7 @@ import com.udanti.common.dao.Customer;
  */
 public interface SalesServiceHandler {
 	
-	Map <String, Object> saveQuotationData(final Map<String,Object> quotationUIMap);
+	public boolean saveSalesOrder(final Map<String,Map<String, Object>> quotationUIMap);
 	
 	List<Customer> populateCustomerNameList(final Map<String,Object> autoCustomerUIMap);
 

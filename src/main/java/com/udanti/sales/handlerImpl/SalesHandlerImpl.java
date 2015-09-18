@@ -25,9 +25,9 @@ public class SalesHandlerImpl implements SalesHandler {
 	private SalesServiceHandler salesServiceHandler ;
 	
 	@Override
-	public Map<String, Object> SubmitQuotationData(
-			final Map<String, Object> quotationUIMap) {
-		return salesServiceHandler.saveQuotationData(quotationUIMap);
+	public boolean createSalesOrder(
+			final Map<String, Map<String, Object>> salesData) {
+		return salesServiceHandler.saveSalesOrder(salesData);
 	}
 
 	@Override

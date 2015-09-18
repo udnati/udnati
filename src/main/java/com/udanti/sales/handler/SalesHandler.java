@@ -14,7 +14,7 @@ import com.udanti.common.dao.Customer;
  */
 public interface SalesHandler {
 
-	Map<String,Object> SubmitQuotationData(final Map<String,Object> quotationUIMap);
+	public boolean createSalesOrder(final Map<String,Map<String, Object>> quotationUIMap);
 	
 	List<Customer> getCustomerNameList(final Map<String,Object> autoCustomerUIMap);
 }

@@ -4,6 +4,7 @@
 package com.udanti.sales.serviceHandlerImpl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +18,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.udanti.common.dao.Customer;
+import com.udanti.sales.constant.SalesConstant;
+import com.udanti.sales.dao.SalesHeader;
+import com.udanti.sales.dao.SalesItem;
 import com.udanti.sales.serviceHandler.SalesServiceHandler;
 
 /**
@@ -32,13 +36,21 @@ public class SalesServiceHandlerImpl implements SalesServiceHandler {
 	
 	
 	@Override
-	public Map<String, Object> saveQuotationData(
-			Map<String, Object> quotationUIMap) {
+	public boolean saveSalesOrder(
+			final Map<String, Map<String, Object>> salesData) {
 		
-	System.out.println("map value "+quotationUIMap.get("customerId"));
-
-		final Map<String, Object> quotationDBMap = quotationUIMap;
-		return quotationDBMap;
+	System.out.println("map value "+salesData.get("customerId"));
+	
+	final Map<String, Object> salesHdrMap = salesData.get(SalesConstant.SALES_HDR);
+	final Map<String, Object> salesDtlMap = salesData.get(SalesConstant.SALES_DTL);
+	
+	final SalesHeader salesHeader = new SalesHeader();
+	salesHeader.setName(String.valueOf(salesHdrMap.get("customerName)")));
+	salesHeader.setPropDate(new Date());
+	
+	final SalesItem salesItem = new SalesItem();
+	
+	return true;
 	}
 	
 	@Override

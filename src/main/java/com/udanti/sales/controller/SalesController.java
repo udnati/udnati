@@ -3,12 +3,11 @@ package com.udanti.sales.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.xml.parsers.ParserConfigurationException;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +18,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
+import org.xml.sax.SAXException;
 
+import com.udanti.common.CommonConstant;
 import com.udanti.common.dao.Customer;
+import com.udanti.common.utils.ConfigUtil;
+import com.udanti.sales.constant.SalesConstant;
 import com.udanti.sales.handler.SalesHandler;
 
 @Controller
@@ -38,74 +40,80 @@ public class SalesController extends MultiActionController {
 	private SalesHandler salesHandler;
 
 	@RequestMapping(value = "/salesController", method = RequestMethod.POST)
-	public String submitQuotation(HttpServletRequest request, Model model) {
+	public String createSaelesOrder(final HttpServletRequest request,
+			final Model model) throws ParserConfigurationException, SAXException, IOException {
 
-		final Map<String, Object> quotationUIMap = new HashMap<String, Object>();
+		final Map<String, Object> salesHdrMap = new HashMap<String, Object>();
+		final Map<String, Object> salesDtlMap = new HashMap<String, Object>();
+		final Map<String, Map<String, Object>> salesData = new HashMap<String, Map<String, Object>>();
 
-		int customerId = 0;
-		String customerName = "";
-		System.out.println("i m in");
+		final String[] salesHdrCol = ConfigUtil.getConfigUtil()
+				.getPropertVal(SalesConstant.SALES_HDR)
+				.split(CommonConstant.COLON);
+		
+		final String[] salesDtlCol = ConfigUtil.getConfigUtil()
+				.getPropertVal(SalesConstant.SALES_DTL)
+				.split(CommonConstant.COLON);
 
-		if (StringUtils.isNotBlank(request.getParameter("custId"))) {
-			customerId = Integer.valueOf(request.getParameter("custId"));
-			System.out.println("CUST iD :" + customerId);
+		for(String col : salesHdrCol){
+			salesHdrMap.put(col, getPropFromRequest(request,col));
 		}
-		if (StringUtils.isNotBlank(request.getParameter("custName"))) {
-			customerName = request.getParameter("custName");
+		
+		for(String col : salesDtlCol){
+			salesDtlMap.put(col, getPropFromRequest(request,col));
 		}
-		System.out.println("customer NAME: " + customerName);
+		salesData.put(SalesConstant.SALES_HDR, salesHdrMap);
+		salesData.put(SalesConstant.SALES_DTL, salesDtlMap);
 
-		/*
-		 * if (StringUtils.isNotBlank(request.getParameter("date"))) { date
-		 * =(Calendar)request.getParameter("date"); }
-		 */
-
-		quotationUIMap.put("customerId", customerId);
-		quotationUIMap.put("customerName", customerName);
-
-		final Map<String, Object> quotationDBMap = salesHandler
-				.SubmitQuotationData(quotationUIMap);
-		System.out.println("return cust ID : "
-				+ quotationDBMap.get("customerId").toString());
-		model.addAttribute("quotationDBMap", quotationDBMap);
+		final boolean salesOrderMap = salesHandler
+				.createSalesOrder(salesData);
+//		System.out.println("return cust ID : "
+//				+ salesOrderMap.get("customerId").toString());
+		model.addAttribute("quotationDBMap", salesOrderMap);
 		String jspName = "/sales/quotation/quotationSave";
 
 		return jspName;
 
 	}
-	
+
 	@RequestMapping(value = "/createSO", method = RequestMethod.GET)
-	public String createSO(){
-		
-		
+	public String createSO() {
+
 		String jspName = "/sales/so/soCreation";
 		return jspName;
 	}
+
 	@ResponseBody
-	@RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE, value="/searchCustomerName" , method=RequestMethod.GET)
-	public   List getCustomerNameList(@RequestParam("term") String query) {
+	@RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/searchCustomerName", method = RequestMethod.GET)
+	public List getCustomerNameList(@RequestParam("term") String query) {
 
 		String autoHint = "";
-		String jsp="";
+		String jsp = "";
 		StringBuilder sb = new StringBuilder();
 		boolean namesAdded = false;
 		Map<String, Object> autoCustomerUIMap = new HashMap<String, Object>();
-		Map<String, Object> autoCustomerDBMap = new HashMap<String, Object>();	
+		Map<String, Object> autoCustomerDBMap = new HashMap<String, Object>();
 		List<Customer> customerNameList = new ArrayList<Customer>();
-			/*if (request.getParameter("query") != null) {
-				autoHint = (request.getParameter("query"));
-			}*/
-			System.out.println("value of autohint is "+autoHint);
-			autoCustomerUIMap.put("autoHint", query);
-			
-			customerNameList = salesHandler.getCustomerNameList(autoCustomerUIMap);
-			
-			System.out.println("size of list"+customerNameList.size());
-			  return customerNameList;
-		
-		//jsp = "responseForCustomerName";
+		/*
+		 * if (request.getParameter("query") != null) { autoHint =
+		 * (request.getParameter("query")); }
+		 */
+		System.out.println("value of autohint is " + autoHint);
+		autoCustomerUIMap.put("autoHint", query);
 
-		//return new ModelAndView(jsp, "map", autoCustomerDBMap);
+		customerNameList = salesHandler.getCustomerNameList(autoCustomerUIMap);
+
+		System.out.println("size of list" + customerNameList.size());
+		return customerNameList;
+
+		// jsp = "responseForCustomerName";
+
+		// return new ModelAndView(jsp, "map", autoCustomerDBMap);
 	}
-
+final String getPropFromRequest(final HttpServletRequest request , final String prop ){
+	if (StringUtils.isNotBlank(request.getParameter(prop))) {
+		return String.valueOf(request.getParameter(prop));
+	}
+	return StringUtils.EMPTY;
+}
 }
