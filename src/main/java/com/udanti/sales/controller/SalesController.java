@@ -23,6 +23,7 @@ import org.xml.sax.SAXException;
 
 import com.udanti.common.CommonConstant;
 import com.udanti.common.dao.Customer;
+import com.udanti.common.dao.Material;
 import com.udanti.common.utils.ConfigUtil;
 import com.udanti.sales.constant.SalesConstant;
 import com.udanti.sales.handler.SalesHandler;
@@ -110,6 +111,24 @@ public class SalesController extends MultiActionController {
 
 		// return new ModelAndView(jsp, "map", autoCustomerDBMap);
 	}
+	
+	@SuppressWarnings("rawtypes")
+	@ResponseBody
+	@RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE, value="/searchMaterial" , method=RequestMethod.GET)
+	public   List getMaterialList(@RequestParam("term") String query) {
+
+		/*Map<String, Object> autoCustomerUIMap = new HashMap<String, Object>();
+		Map<String, Object> autoCustomerDBMap = new HashMap<String, Object>();	
+		*/List<Material> materialList = new ArrayList<Material>();
+			
+			//autoCustomerUIMap.put("autoHint", query);
+			
+			materialList = salesHandler.getMaterialList(query);
+			
+			System.out.println("size of list"+materialList.size());
+			  return materialList;
+	}
+
 final String getPropFromRequest(final HttpServletRequest request , final String prop ){
 	if (StringUtils.isNotBlank(request.getParameter(prop))) {
 		return String.valueOf(request.getParameter(prop));

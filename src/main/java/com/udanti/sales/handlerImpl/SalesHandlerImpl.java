@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.udanti.common.dao.Customer;
+import com.udanti.common.dao.Material;
 import com.udanti.sales.handler.SalesHandler;
 import com.udanti.sales.serviceHandler.SalesServiceHandler;
 
@@ -36,4 +37,8 @@ public class SalesHandlerImpl implements SalesHandler {
 		return salesServiceHandler.populateCustomerNameList(autoCustomerUIMap);
 	}
 
+	@Override
+	public List<Material> getMaterialList(String query) {
+		return salesServiceHandler.getMaterialList(query);
+	}
 }

@@ -651,7 +651,7 @@ public class SalesHeader implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "salesHeader")
-	public Set getSalesItems() {
+	public Set<SalesItem> getSalesItems() {
 		return this.salesItems;
 	}
 

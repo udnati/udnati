@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.udanti.common.dao.Customer;
+import com.udanti.common.dao.Material;
 import com.udanti.sales.constant.SalesConstant;
 import com.udanti.sales.dao.SalesHeader;
 import com.udanti.sales.dao.SalesItem;
@@ -80,5 +81,21 @@ public class SalesServiceHandlerImpl implements SalesServiceHandler {
 	return customerNameList;
 
 	}
-
+	@Override
+	public List<Material> getMaterialList(String query) {
+		Session session = sessionFactory.getCurrentSession();
+		List<Material> materialList = new ArrayList<Material>();
+		try{
+		String str = query + "%";
+		
+		Criteria crit = session.createCriteria(Material.class)
+				.add(Restrictions.ilike("materialName", str));
+		crit.setFirstResult(0);
+		crit.setMaxResults(10);
+		materialList=crit.list();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return materialList;
+	}
 }
