@@ -55,6 +55,8 @@ public class Customer implements java.io.Serializable {
 	private String bankAccnt;
 	private String companySize;
 	private String defaulter;
+	private String balanceType;
+	private Double balance;
 
 	public Customer() {
 	}
@@ -74,7 +76,7 @@ public class Customer implements java.io.Serializable {
 			String transportation, String zone, String vatNum,
 			String defaultSoldToParty, String annualSales, String salesYear,
 			String employee, String accnt, String bankAccnt,
-			String companySize, String defaulter) {
+			String companySize, String defaulter,String balanceType,Double balance) {
 		this.custId = custId;
 		this.country = country;
 		this.name = name;
@@ -110,6 +112,8 @@ public class Customer implements java.io.Serializable {
 		this.bankAccnt = bankAccnt;
 		this.companySize = companySize;
 		this.defaulter = defaulter;
+		this.balanceType = balanceType;
+		this.balance = balance;
 	}
 
 	@Id
@@ -427,6 +431,23 @@ public class Customer implements java.io.Serializable {
 
 	public void setDefaulter(String defaulter) {
 		this.defaulter = defaulter;
+	}
+
+	@Column(name = "balance_type", length = 10)
+	public String getBalanceType() {
+		return balanceType;
+	}
+
+	public void setBalanceType(String balanceType) {
+		this.balanceType = balanceType;
+	}
+	@Column(name = "balance")
+	public Double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(Double balance) {
+		this.balance = balance;
 	}
 
 }

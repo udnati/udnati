@@ -85,6 +85,8 @@ public class Material implements java.io.Serializable {
 	private String freeCharactValue;
 	private String careCode;
 	private String brand;
+	private String materialName;
+	private Double rate;
 
 	public Material() {
 	}
@@ -119,7 +121,7 @@ public class Material implements java.io.Serializable {
 			String overcapacityToler,
 			String textileCompositionMaintenanceActive, String seasonUsage,
 			String color, String mainSize, String secondSize,
-			String freeCharactValue, String careCode, String brand) {
+			String freeCharactValue, String careCode, String brand, String materialName, Double rate) {
 		this.materialId = materialId;
 		this.createdOn = createdOn;
 		this.createdBy = createdBy;
@@ -186,6 +188,8 @@ public class Material implements java.io.Serializable {
 		this.freeCharactValue = freeCharactValue;
 		this.careCode = careCode;
 		this.brand = brand;
+		this.materialName = materialName;
+		this.rate = rate;
 	}
 
 	@Id
@@ -784,6 +788,23 @@ public class Material implements java.io.Serializable {
 
 	public void setBrand(String brand) {
 		this.brand = brand;
+	}
+	
+	@Column(name = "material_name", length = 50)
+	public String getMaterialName() {
+		return materialName;
+	}
+
+	public void setMaterialName(String materialName) {
+		this.materialName = materialName;
+	}
+	@Column(name = "rate", length = 50)
+	public Double getRate() {
+		return rate;
+	}
+
+	public void setRate(Double rate) {
+		this.rate = rate;
 	}
 
 }
