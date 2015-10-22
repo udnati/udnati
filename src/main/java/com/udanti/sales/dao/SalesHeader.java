@@ -72,7 +72,7 @@ public class SalesHeader implements java.io.Serializable {
 	private String modificationAllowed;
 	private String cancellationAllowed;
 	private String paymentMethods;
-	private Set salesItems = new HashSet(0);
+	private Set<SalesItem> salesItems = new HashSet<SalesItem>(0);
 
 	public SalesHeader() {
 	}
