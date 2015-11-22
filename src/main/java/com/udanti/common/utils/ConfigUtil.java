@@ -1,7 +1,10 @@
 package com.udanti.common.utils;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -67,6 +70,23 @@ public class ConfigUtil {
 		System.out.println("Root element :"
 				+ doc.getDocumentElement().getNodeName());
 		return doc;
+	}
+
+	public Properties getSalesOrderProp() throws IOException {
+		InputStream inputStream;
+		Properties prop = new Properties();
+		String propFileName = "config.properties";
+		inputStream = getClass().getClassLoader().getResourceAsStream(
+				propFileName);
+
+		if (inputStream != null) {
+			prop.load(inputStream);
+		} else {
+			throw new FileNotFoundException("property file '" + propFileName
+					+ "' not found in the classpath");
+		}
+		return prop;
+
 	}
 
 	public static ConfigUtil getConfigUtil() {

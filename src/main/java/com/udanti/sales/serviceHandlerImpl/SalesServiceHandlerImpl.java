@@ -46,10 +46,20 @@ public class SalesServiceHandlerImpl implements SalesServiceHandler {
 	final Map<String, Object> salesDtlMap = salesData.get(SalesConstant.SALES_DTL);
 	
 	final SalesHeader salesHeader = new SalesHeader();
-	salesHeader.setName(String.valueOf(salesHdrMap.get("customerName)")));
+	salesHeader.setCustomerId(new Customer(Integer.parseInt(String.valueOf(salesHdrMap.get("custId")))));
 	salesHeader.setPropDate(new Date());
+	salesHeader.setTelephone(String.valueOf(salesHdrMap.get("telephone")));
+	salesHeader.setPaymentMethods(String.valueOf(salesHdrMap.get("creditDebit")));
+	salesHeader.setName(String.valueOf(salesHdrMap.get("contPerson")));
 	
 	final SalesItem salesItem = new SalesItem();
+	//salesItem.setSalesHeader(salesHeader);
+	
+   sessionFactory.getCurrentSession().save(salesHeader);
+   
+   salesItem.setSalesHeader(salesHeader);
+	//salesItem.setSalesHeader(new SalesHeader(salesHeader.getSalesNumber()));
+	sessionFactory.getCurrentSession().save(salesItem);
 	
 	return true;
 	}

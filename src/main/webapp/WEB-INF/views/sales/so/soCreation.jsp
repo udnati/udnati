@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -14,7 +15,7 @@
 <script src="js/jquery/jquery.ui.autocomplete.min.js"></script>
 <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
 
-<link rel="stylesheet" href="js/jquery/smoothness/jquery-ui-1.8.16.custom.css"/>
+//<link rel="stylesheet" href="js/jquery/smoothness/jquery-ui-1.8.16.custom.css"/>
 
 
 <script type="text/javascript">
@@ -113,7 +114,7 @@ th, td {
 </style>
 <body>
 <h1>Create Supply Order</h1>
-<form:form action="../sales/createSO"  name="soCreation"  id="soCreation" method="POST">
+<form:form action="../sales/salesController"  name="soCreation"  id="soCreation" method="POST">
 <label>Customer Id</label>
 <input type="text" name="custId" id="custId" value=""></input>
 

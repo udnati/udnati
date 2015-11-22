@@ -41,35 +41,38 @@ public class SalesController extends MultiActionController {
 	private SalesHandler salesHandler;
 
 	@RequestMapping(value = "/salesController", method = RequestMethod.POST)
-	public String createSaelesOrder(final HttpServletRequest request,
-			final Model model) throws ParserConfigurationException, SAXException, IOException {
-
+	public String createSaelesOrder(final HttpServletRequest request,String material[],
+			final Model model) throws ParserConfigurationException,
+			SAXException, IOException {
 		final Map<String, Object> salesHdrMap = new HashMap<String, Object>();
 		final Map<String, Object> salesDtlMap = new HashMap<String, Object>();
 		final Map<String, Map<String, Object>> salesData = new HashMap<String, Map<String, Object>>();
 
-		final String[] salesHdrCol = ConfigUtil.getConfigUtil()
-				.getPropertVal(SalesConstant.SALES_HDR)
-				.split(CommonConstant.COLON);
 		
-		final String[] salesDtlCol = ConfigUtil.getConfigUtil()
-				.getPropertVal(SalesConstant.SALES_DTL)
+		System.out.println("==========>"+material.length);
+		final String[] salesHdrCol = ConfigUtil.getConfigUtil()
+				.getSalesOrderProp().getProperty("SalesHdrField")
 				.split(CommonConstant.COLON);
 
-		for(String col : salesHdrCol){
-			salesHdrMap.put(col, getPropFromRequest(request,col));
-		}
 		
-		for(String col : salesDtlCol){
-			salesDtlMap.put(col, getPropFromRequest(request,col));
+		
+		final String[] salesDtlCol = ConfigUtil.getConfigUtil()
+				.getSalesOrderProp().getProperty("SalesDtlField")
+				.split(CommonConstant.COLON);
+
+		for (String col : salesHdrCol) {
+			salesHdrMap.put(col, getPropFromRequest(request, col));
+		}
+
+		for (String col : salesDtlCol) {
+			salesDtlMap.put(col, getPropFromRequest(request, col));
 		}
 		salesData.put(SalesConstant.SALES_HDR, salesHdrMap);
 		salesData.put(SalesConstant.SALES_DTL, salesDtlMap);
 
-		final boolean salesOrderMap = salesHandler
-				.createSalesOrder(salesData);
-//		System.out.println("return cust ID : "
-//				+ salesOrderMap.get("customerId").toString());
+		final boolean salesOrderMap = salesHandler.createSalesOrder(salesData);
+		// System.out.println("return cust ID : "
+		// + salesOrderMap.get("customerId").toString());
 		model.addAttribute("quotationDBMap", salesOrderMap);
 		String jspName = "/sales/quotation/quotationSave";
 
@@ -111,28 +114,31 @@ public class SalesController extends MultiActionController {
 
 		// return new ModelAndView(jsp, "map", autoCustomerDBMap);
 	}
-	
+
 	@SuppressWarnings("rawtypes")
 	@ResponseBody
-	@RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE, value="/searchMaterial" , method=RequestMethod.GET)
-	public   List getMaterialList(@RequestParam("term") String query) {
+	@RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/searchMaterial", method = RequestMethod.GET)
+	public List getMaterialList(@RequestParam("term") String query) {
 
-		/*Map<String, Object> autoCustomerUIMap = new HashMap<String, Object>();
-		Map<String, Object> autoCustomerDBMap = new HashMap<String, Object>();	
-		*/List<Material> materialList = new ArrayList<Material>();
-			
-			//autoCustomerUIMap.put("autoHint", query);
-			
-			materialList = salesHandler.getMaterialList(query);
-			
-			System.out.println("size of list"+materialList.size());
-			  return materialList;
+		/*
+		 * Map<String, Object> autoCustomerUIMap = new HashMap<String,
+		 * Object>(); Map<String, Object> autoCustomerDBMap = new
+		 * HashMap<String, Object>();
+		 */List<Material> materialList = new ArrayList<Material>();
+
+		// autoCustomerUIMap.put("autoHint", query);
+
+		materialList = salesHandler.getMaterialList(query);
+
+		System.out.println("size of list" + materialList.size());
+		return materialList;
 	}
 
-final String getPropFromRequest(final HttpServletRequest request , final String prop ){
-	if (StringUtils.isNotBlank(request.getParameter(prop))) {
-		return String.valueOf(request.getParameter(prop));
+	final String getPropFromRequest(final HttpServletRequest request,
+			final String prop) {
+		if (StringUtils.isNotBlank(request.getParameter(prop))) {
+			return String.valueOf(request.getParameter(prop));
+		}
+		return StringUtils.EMPTY;
 	}
-	return StringUtils.EMPTY;
-}
 }
