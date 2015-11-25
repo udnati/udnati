@@ -57,8 +57,10 @@ public class SalesServiceHandlerImpl implements SalesServiceHandler {
 	
    sessionFactory.getCurrentSession().save(salesHeader);
    
+   System.out.println("==============>"+salesHeader.getSalesNumber());
    salesItem.setSalesHeader(salesHeader);
 	//salesItem.setSalesHeader(new SalesHeader(salesHeader.getSalesNumber()));
+   salesItem.setDescription("saved by sandeep");
 	sessionFactory.getCurrentSession().save(salesItem);
 	
 	return true;

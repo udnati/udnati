@@ -41,7 +41,7 @@ public class SalesController extends MultiActionController {
 	private SalesHandler salesHandler;
 
 	@RequestMapping(value = "/salesController", method = RequestMethod.POST)
-	public String createSaelesOrder(final HttpServletRequest request,String material[],
+	public String createSaelesOrder(final HttpServletRequest request,
 			final Model model) throws ParserConfigurationException,
 			SAXException, IOException {
 		final Map<String, Object> salesHdrMap = new HashMap<String, Object>();
@@ -49,12 +49,12 @@ public class SalesController extends MultiActionController {
 		final Map<String, Map<String, Object>> salesData = new HashMap<String, Map<String, Object>>();
 
 		
-		System.out.println("==========>"+material.length);
 		final String[] salesHdrCol = ConfigUtil.getConfigUtil()
 				.getSalesOrderProp().getProperty("SalesHdrField")
 				.split(CommonConstant.COLON);
 
-		
+		String [] material= request.getParameterValues("material");
+		System.out.println("========>"+material.length);
 		
 		final String[] salesDtlCol = ConfigUtil.getConfigUtil()
 				.getSalesOrderProp().getProperty("SalesDtlField")
